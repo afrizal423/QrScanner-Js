@@ -1,4 +1,4 @@
-# QRBrcode Scanner dengan javascript.
+# QRBarcode Scanner dengan javascript.
 Demo here >> https://qrscan.afrizal-my.xyz/
 ``` bash
 Ini adalah QR kode scanner yang dijalankan pada platfrom web. 
