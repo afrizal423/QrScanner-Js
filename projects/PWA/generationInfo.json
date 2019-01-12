@@ -1,0 +1,10 @@
+{
+    "generationTool": "pwabuilder-api",
+    "generationToolVersion": "2.0.1-rc.0",
+    "platformId": "web",
+    "platformPackage": "pwabuilder-web",
+    "platformVersion": "2.0.0-rc.2",
+    "generatedFrom": "Website Wizard",
+    "generationDate": "2018-12-29 08:26:12 Z",
+    "generatedURL": "https://qrscan.afrizal-my.xyz/projects/PWA/manifest.json"
+}

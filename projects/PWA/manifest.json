@@ -1,0 +1,22 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "QR Scanner",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "https://qrscan.afrizal-my.xyz/",
+    "short_name": "QR Scanner",
+    "theme_color": "transparent",
+    "description": "",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/images/logoscan2.png",
+            "type": "image/png",
+            "sizes": "378x266"
+        }
+    ]
+}

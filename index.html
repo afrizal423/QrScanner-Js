@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+   <meta name="google-site-verification" content="anijMoJVglPEgMQv8-5YhYZMnSDwqYueXJiZspDJK4E" />
+   <script src="projects/serviceWorker1/pwabuilder-sw-register.js"></script>
+  <link rel="manifest" href="projects/PWA/manifest.json">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>QR Scanner</title>
+    <link rel="shortcut icon" href="images/logoscan2.png" />
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="js/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body class="grey lighten-4">
+        <div class="navbar-fixed">
+  <nav class="indigo z-depth-2" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo white-text show-on-small "><img src="/images/logoscan2.png" style="height:60px;width: 75px;"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"></a></li>
+      </ul>
+      
+    </div>
+  </nav>
+</div>
+<ul id="nav-mobile" class="sidenav white-text">
+  <li><a href="#">Navbar Link</a></li>
+</ul>
+
+        <h3 class="center">Scan QR Code</h3>
+        <hr>
+        <div class="center"><canvas></canvas></div>
+        <hr>
+        <select class="browser-default"></select>
+        <hr>
+        <ul></ul>
+        <div class="hasil card-panel"><h5>Hasil:</h5></div>
+          <footer class="page-footer indigo" id="">
+              <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About This</h5>
+          <p class="grey-text text-lighten-4">Ini adalah QR kode scanner yang dijalankan pada platfrom web. Didukung dengan manifest serta service worker yang bertujuan untuk menjadikan Progressive Web App dan bisa diinstall pada platform mobile melalui browser. Aplikasi ini menggunakan library dari <a href="https://github.com/andrastoth/webcodecamjs" class="white-text">Andrastoth</a>. Bisa dikembangkan lagi dengan menghubungkan kebagian database untuk kebutuhan yang lain.</p>
+
+
+        </div>
+      </div>
+    </div>
+              <div class="footer-copyright">
+      <div class="container white-text">
+      Design by <a class="brown-text text-lighten-3" href="https://afrizal-my.xyz">Afrizal</a>
+      <div class="right">Library Version v2.1.0</div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://afrizal-my.xyz/assets/projects2/manup.js"></script>
+  <script src="/projects/serviceWorker1/pwabuilder-sw.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script type="text/javascript" src="js/forms.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/qrcodelib.js"></script>
+        <script type="text/javascript" src="js/webcodecamjquery.js"></script>
+        <script type="text/javascript"> 
+        var deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  console.log('beforeinstallprompt Event fired');
+  e.preventDefault();
+
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+
+  return false;
+});
+
+btnSave.addEventListener('click', function() {
+  if(deferredPrompt !== undefined) {
+    // The user has had a postive interaction with our app and Chrome
+    // has tried to prompt previously, so let's show the prompt.
+    deferredPrompt.prompt();
+
+    // Follow what the user has done with the prompt.
+    deferredPrompt.userChoice.then(function(choiceResult) {
+
+      console.log(choiceResult.outcome);
+
+      if(choiceResult.outcome == 'dismissed') {
+        console.log('User cancelled home screen install');
+      }
+      else {
+        console.log('User added to home screen');
+      }
+
+      // We no longer need the prompt.  Clear it up.
+      deferredPrompt = null;
+    });
+  }
+});
+
+$(document).ready(function() {
+  Materialize.updateTextFields();
+});
+        </script>
+       <script type="text/javascript">
+         
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+             var arg = {
+                resultFunction: function(result) {
+                    $('.hasil').append($('<li>' + result.format + ': ' + result.code + '</li>'));
+                }
+            };
+            var decoder = $("canvas").WebCodeCamJQuery(arg).data().plugin_WebCodeCamJQuery;
+            decoder.buildSelectMenu("select");
+            decoder.play();
+            /*  Without visible select menu
+                decoder.buildSelectMenu(document.createElement('select'), 'environment|back').init(arg).play();
+            */
+            $('select').on('change', function(){
+                decoder.stop().play();
+            });
+        </script>
+        
+    </body>
+</html>
