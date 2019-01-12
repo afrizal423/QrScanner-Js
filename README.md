@@ -1,7 +1,11 @@
 # QRBrcode Scanner dengan javascript.
 Demo here >> https://qrscan.afrizal-my.xyz/
 ```
-Ini adalah QR kode scanner yang dijalankan pada platfrom web. Didukung dengan manifest serta service worker yang bertujuan untuk menjadikan Progressive Web App dan bisa diinstall pada platform mobile melalui browser. Aplikasi ini menggunakan library dari Andrastoth. Bisa dikembangkan lagi dengan menghubungkan kebagian database untuk kebutuhan yang lain. 
+Ini adalah QR kode scanner yang dijalankan pada platfrom web. 
+
+Didukung dengan manifest serta service worker yang bertujuan untuk menjadikan Progressive Web App dan bisa diinstall pada platform mobile melalui browser. 
+
+Aplikasi ini menggunakan library dari Andrastoth. Bisa dikembangkan lagi dengan menghubungkan kebagian database untuk kebutuhan yang lain. 
 ```
 Cara instalasi
 ```
