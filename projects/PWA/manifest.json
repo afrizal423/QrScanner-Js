@@ -4,7 +4,7 @@
     "name": "QR Scanner",
     "scope": "/",
     "display": "standalone",
-    "start_url": "https://qrscan.afrizal-my.xyz/",
+    "start_url": "https://qrscan.afrizal.web.id/",
     "short_name": "QR Scanner",
     "theme_color": "transparent",
     "description": "",

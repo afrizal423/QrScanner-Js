@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
+   <meta name="google-site-verification" content="anijMoJVglPEgMQv8-5YhYZMnSDwqYueXJiZspDJK4E" />
    <script src="projects/serviceWorker1/pwabuilder-sw-register.js"></script>
   <link rel="manifest" href="projects/PWA/manifest.json">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -16,7 +16,7 @@
         <div class="navbar-fixed">
   <nav class="indigo z-depth-2" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo white-text show-on-small "><img src="/images/logoscan2.png" style="height:60px;width: 75px;"></a>
+      <a id="logo-container" href="#" class="brand-logo white-text show-on-small "><img src="images/logoscan2.png" style="height:60px;width: 75px;"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#"></a></li>
       </ul>
@@ -49,45 +49,56 @@
     </div>
               <div class="footer-copyright">
       <div class="container white-text">
-      Design by <a class="brown-text text-lighten-3" href="https://afrizal-my.xyz">Afrizal</a>
+      Design by <a class="brown-text text-lighten-3" href="https://afrizalmy.com">Afrizal</a>
       <div class="right">Library Version v2.1.0</div>
       </div>
     </div>
   </footer>
   
-  <script src="https://afrizal-my.xyz/assets/projects2/manup.js"></script>
+  <script src="js/manup.js"></script>
   <script src="/projects/serviceWorker1/pwabuilder-sw.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
+        <script type="text/javascript" src="js/forms.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/qrcodelib.js"></script>
         <script type="text/javascript" src="js/webcodecamjquery.js"></script>
         <script type="text/javascript"> 
-        let deferredPrompt;
+        var deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
+window.addEventListener('beforeinstallprompt', function(e) {
+  console.log('beforeinstallprompt Event fired');
   e.preventDefault();
+
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
+
+  return false;
 });
 
-btnAdd.addEventListener('click', (e) => {
-  // hide our user interface that shows our A2HS button
-  btnAdd.style.display = 'none';
-  // Show the prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice
-    .then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
+btnSave.addEventListener('click', function() {
+  if(deferredPrompt !== undefined) {
+    // The user has had a postive interaction with our app and Chrome
+    // has tried to prompt previously, so let's show the prompt.
+    deferredPrompt.prompt();
+
+    // Follow what the user has done with the prompt.
+    deferredPrompt.userChoice.then(function(choiceResult) {
+
+      console.log(choiceResult.outcome);
+
+      if(choiceResult.outcome == 'dismissed') {
+        console.log('User cancelled home screen install');
       }
+      else {
+        console.log('User added to home screen');
+      }
+
+      // We no longer need the prompt.  Clear it up.
       deferredPrompt = null;
     });
+  }
 });
 
 $(document).ready(function() {
